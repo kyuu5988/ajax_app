@@ -27,8 +27,10 @@ function memo() {
       list.insertAdjacentHTML("afterend", HTML);
       formText.value = "";
     };
+    //↓コントローラーのアクションと重複した場合に
     e.preventDefault();
-    //↑現在進行中の動作を中止するメソッ
+    //↑現在進行中の動作を中止するメソッど
+    // eはイベント情報が格納されている
   });
 }
 window.addEventListener("load", memo);

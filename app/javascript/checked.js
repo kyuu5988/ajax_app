@@ -1,14 +1,18 @@
 function check() {
   const posts = document.querySelectorAll(".post");
+  //↑複数の要素を取得。なので↓で繰り返し処理
   posts.forEach(function (post) {
+
     //↓１秒毎に読み込まれるので重複追加を回避する記述
     if (post.getAttribute("data-load") != null) {
       return null;//2回目以降に読み込まれて属性があれば処理が停止
     }
     post.setAttribute("data-load", "true");//最初に要素に属性追加
     //ここまで
-    post.addEventListener("click", () => {
+
+    post.addEventListener("click", () => {//クリックイベント
       const postId = post.getAttribute("data-id");
+      //↑投稿データのidの数字だけを取得
       const XHR = new XMLHttpRequest();
       XHR.open("GET", `/posts/${postId}`, true);
       XHR.responseType = "json";

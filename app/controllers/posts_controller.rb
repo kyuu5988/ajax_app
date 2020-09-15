@@ -13,13 +13,15 @@ class PostsController < ApplicationController
 
   def checked
     post = Post.find(params[:id])
-    if post.checked 
+    if post.checked #(カラムの値がtrueかどうか)
       post.update(checked: false)
-    else
+    else #falseならこっちを実行
       post.update(checked: true)
     end
 
     item = Post.find(params[:id])
+    #更新したレコードを取得
     render json: { post: item }
+    #JSON形式のデータをchecked.jsに返却
   end
 end
